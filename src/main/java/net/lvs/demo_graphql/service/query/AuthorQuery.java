@@ -6,12 +6,14 @@ import net.lvs.demo_graphql.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class AuthorQuery implements GraphQLQueryResolver {
 
     @Autowired
     private AuthorRepository authorRepository;
 
+    public AuthorQuery(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     public Iterable<Author> findAll() {
         return authorRepository.findAll();

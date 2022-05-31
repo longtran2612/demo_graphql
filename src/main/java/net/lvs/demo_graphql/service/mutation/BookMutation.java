@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
-@Component
 public class BookMutation implements GraphQLMutationResolver {
 
     @Autowired
     private BookRepository bookRepository;
 
+    public BookMutation(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
+    }
 
     public Book newBook(String name, int pages, Integer page, Long authorId) {
         Book book = new Book();

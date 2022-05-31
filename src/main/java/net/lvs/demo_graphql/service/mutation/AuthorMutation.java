@@ -9,13 +9,15 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
-@Component
 public class AuthorMutation implements GraphQLMutationResolver {
 
 
     @Autowired
     private AuthorRepository authorRepository;
 
+    public AuthorMutation(AuthorRepository authorRepository) {
+        this.authorRepository = authorRepository;
+    }
 
     public Author createAuthor(String firstName, String lastName) {
         Author author = new Author();
