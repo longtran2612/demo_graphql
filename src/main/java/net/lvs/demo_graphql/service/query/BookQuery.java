@@ -17,10 +17,10 @@ public class BookQuery implements GraphQLQueryResolver {
         this.bookRepository = bookRepository;
     }
 
-    public Book findById(String id) {
+    public Book findBookById(String id) {
         return bookRepository.findById(id).get();
     }
-    public List<Book> findAll() {
+    public List<Book> findAllBook() {
         return bookRepository.findAll();
     }
 

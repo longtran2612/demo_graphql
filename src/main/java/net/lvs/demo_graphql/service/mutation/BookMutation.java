@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;
+
+@Component
 public class BookMutation implements GraphQLMutationResolver {
 
     @Autowired
@@ -18,7 +20,7 @@ public class BookMutation implements GraphQLMutationResolver {
         this.bookRepository = bookRepository;
     }
 
-    public Book newBook(String name, int pages, Integer page, Long authorId) {
+    public Book newBook(String name, Integer page, String authorId) {
         Book book = new Book();
         book.setAuthor(new Author());
         book.setName(name);
@@ -34,7 +36,7 @@ public class BookMutation implements GraphQLMutationResolver {
         return true;
     }
 
-    public Book updateBookPageCount(Integer pageCount, String id) {
+    public Book updateBook(Integer pageCount, String id) {
         Optional<Book> opt = bookRepository.findById(id);
         if (opt.isPresent()) {
             Book book = opt.get();

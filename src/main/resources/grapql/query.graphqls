@@ -1,5 +1,7 @@
 type Query {
-    findById(id: String): Book
-
+    findBookById(id: String): Book
+    findAllBook: [Book]
+    findAuthorById(id:String):Author
+    findAllAuthor: [Author]
 
 }
