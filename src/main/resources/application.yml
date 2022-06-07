@@ -6,10 +6,3 @@ spring:
 
 server:
   port: 7000
-
-graphiql:
-  enabled: true
-
-graphql:
-  servlet:
-    max-query-depth: 5

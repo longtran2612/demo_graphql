@@ -1,5 +1,0 @@
-type Mutation{
-    newBook(name:String,page:Int,author:String):Book
-    deleteBook(id:String): Boolean
-
-}

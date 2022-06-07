@@ -9,31 +9,24 @@ import org.springframework.stereotype.Component;
 
 import java.util.Optional;
 
+@Component
 public class AuthorMutation implements GraphQLMutationResolver {
 
 
+
     @Autowired
-    private AuthorRepository authorRepository;
+    private  AuthorRepository authorRepository;
 
-    public AuthorMutation(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
+    public Author createAuthor(Author author) {
+        return  authorRepository.save(author);
     }
-
-    public Author createAuthor(String firstName, String lastName) {
-        Author author = new Author();
-        author.setFirstName(firstName);
-        author.setLastName(lastName);
-        authorRepository.save(author);
-        return author;
-    }
-
 
     public boolean deleteAuthor(String id) {
         authorRepository.deleteById(id);
         return true;
     }
 
-    public Author updateAuthor(String firstName, String lastName, String id) {
+    public Author updateAuthor( String id,String firstName, String lastName) {
         Optional<Author> opt = authorRepository.findById(id);
         if (opt.isPresent()) {
             Author author = opt.get();

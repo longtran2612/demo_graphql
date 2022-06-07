@@ -11,12 +11,10 @@ import java.util.List;
 @Component
 public class AuthorQuery implements GraphQLQueryResolver {
 
-    @Autowired
-    private AuthorRepository authorRepository;
 
-    public AuthorQuery(AuthorRepository authorRepository) {
-        this.authorRepository = authorRepository;
-    }
+    @Autowired
+    private  AuthorRepository authorRepository;
+
     public Author findAuthorById(String id) {
         return authorRepository.findById(id).get();
     }
@@ -25,8 +23,5 @@ public class AuthorQuery implements GraphQLQueryResolver {
         return authorRepository.findAll();
     }
 
-    public long countBooks() {
-        return authorRepository.count();
-    }
 
 }
